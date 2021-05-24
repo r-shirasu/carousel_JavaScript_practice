@@ -3,10 +3,10 @@
 const reviews = [
   {
     id: 0,
-    fruitsName: "Orange",
-    color: "Orange",
-    img: "./fruits/category_tn_186.jpeg",
-    text: "和歌山県で多く取れます",
+    fruitsName: "Peach",
+    color: "Pink",
+    img: "./fruits/category_tn_190.jpeg",
+    text: "山梨県で多く取れます",
   },
   {
     id: 1,
@@ -57,18 +57,18 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // function showFruits()
-function showFruits() {
+const showFruits = () => {
   const item = reviews[currentItem];
   img.src = item.img;
   fruitsName.textContent = item.fruitsName;
   color.textContent = item.color;
   info.textContent = item.text;
-}
+};
 
 // show next button
 nextBtn.addEventListener("click", () => {
   currentItem++;
-  //   0番のオレンジに戻る
+  //   0番のピーチに戻る
   if (currentItem > reviews.length - 1) {
     currentItem = 0;
   }
@@ -82,5 +82,11 @@ prevBtn.addEventListener("click", () => {
     //   4番のバナナに戻る
     currentItem = reviews.length - 1;
   }
+  showFruits();
+});
+
+//random button
+randomBtn.addEventListener("click", () => {
+  currentItem = Math.floor(Math.random() * reviews.length);
   showFruits();
 });
