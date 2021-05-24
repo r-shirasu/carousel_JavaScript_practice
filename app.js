@@ -1,9 +1,9 @@
 "use strict";
 
-const reviwes = [
+const reviews = [
   {
     id: 1,
-    fruitsName: "Chery",
+    fruitsName: "Cherry",
     color: "Red",
     img: "./fruits/category_tn_192.jpeg",
     text: "山形県で多く取れます",
@@ -42,10 +42,12 @@ const nextBtn = document.querySelector(".next-btn");
 const randomBtn = document.querySelector(".random-btn");
 
 // set starting item
-let currentItem = 1;
+let currentItem = 0;
 
 // load initial item
-window.addEventListener("DOMContentLaded", function () {
-  const item = reviwes[currentItem];
+window.addEventListener("DOMContentLoaded", function () {
+  const item = reviews[currentItem];
   img.src = item.img;
 });
+
+// function showFruits()
