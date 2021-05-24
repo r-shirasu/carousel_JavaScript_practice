@@ -2,6 +2,13 @@
 
 const reviews = [
   {
+    id: 0,
+    fruitsName: "Orange",
+    color: "Orange",
+    img: "./fruits/category_tn_186.jpeg",
+    text: "和歌山県で多く取れます",
+  },
+  {
     id: 1,
     fruitsName: "Cherry",
     color: "Red",
@@ -32,7 +39,6 @@ const reviews = [
 ];
 
 const img = document.getElementById("fruits-img");
-<<<<<<< HEAD
 const fruitsName = document.getElementById("fruits");
 const color = document.getElementById("color");
 const info = document.getElementById("info");
@@ -46,13 +52,35 @@ const randomBtn = document.querySelector(".random-btn");
 let currentItem = 0;
 
 // load initial item
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", () => {
+  showFruits();
+});
+
+// function showFruits()
+function showFruits() {
   const item = reviews[currentItem];
   img.src = item.img;
   fruitsName.textContent = item.fruitsName;
   color.textContent = item.color;
   info.textContent = item.text;
+}
+
+// show next button
+nextBtn.addEventListener("click", () => {
+  currentItem++;
+  //   0番のオレンジに戻る
+  if (currentItem > reviews.length - 1) {
+    currentItem = 0;
+  }
+  showFruits();
 });
 
-// function showFruits()
-
+//show prevent button
+prevBtn.addEventListener("click", () => {
+  currentItem--;
+  if (currentItem < 0) {
+    //   4番のバナナに戻る
+    currentItem = reviews.length - 1;
+  }
+  showFruits();
+});
