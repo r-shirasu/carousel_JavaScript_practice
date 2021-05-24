@@ -32,6 +32,7 @@ const reviews = [
 ];
 
 const img = document.getElementById("fruits-img");
+<<<<<<< HEAD
 const fruitsName = document.getElementById("fruits");
 const color = document.getElementById("color");
 const info = document.getElementById("info");
@@ -54,3 +55,4 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 // function showFruits()
+
