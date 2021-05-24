@@ -53,12 +53,12 @@ let currentItem = 0;
 
 // load initial item
 window.addEventListener("DOMContentLoaded", () => {
-  showFruits(currentItem);
+  showFruits();
 });
 
 // function showFruits()
-function showFruits(fruit) {
-  const item = reviews[fruit];
+function showFruits() {
+  const item = reviews[currentItem];
   img.src = item.img;
   fruitsName.textContent = item.fruitsName;
   color.textContent = item.color;
@@ -68,17 +68,19 @@ function showFruits(fruit) {
 // show next button
 nextBtn.addEventListener("click", () => {
   currentItem++;
+  //   0番のオレンジに戻る
   if (currentItem > reviews.length - 1) {
     currentItem = 0;
   }
-  showFruits(currentItem);
+  showFruits();
 });
 
 //show prevent button
 prevBtn.addEventListener("click", () => {
   currentItem--;
   if (currentItem < 0) {
+    //   4番のバナナに戻る
     currentItem = reviews.length - 1;
   }
-  showFruits(currentItem);
+  showFruits();
 });
