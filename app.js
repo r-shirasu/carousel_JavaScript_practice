@@ -57,18 +57,18 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // function showFruits()
-function showFruits() {
+const showFruits = () => {
   const item = reviews[currentItem];
   img.src = item.img;
   fruitsName.textContent = item.fruitsName;
   color.textContent = item.color;
   info.textContent = item.text;
-}
+};
 
 // show next button
 nextBtn.addEventListener("click", () => {
   currentItem++;
-  //   0番のオレンジに戻る
+  //   0番のピーチに戻る
   if (currentItem > reviews.length - 1) {
     currentItem = 0;
   }
