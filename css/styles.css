@@ -56,6 +56,20 @@ p#info {
   color: #1d2b73;
 }
 
-button {
+.button-container {
+  width: 70px;
+  margin: auto;
+}
+
+.fa-chevron-left {
+}
+
+.fa-chevron-right {
+}
+
+.random-btn {
+  width: 100px;
   text-align: center;
+  margin-top: 15px;
+  margin-left: 250px;
 }
