@@ -48,6 +48,9 @@ let currentItem = 0;
 window.addEventListener("DOMContentLoaded", function () {
   const item = reviews[currentItem];
   img.src = item.img;
+  fruitsName.textContent = item.fruitsName;
+  color.textContent = item.color;
+  info.textContent = item.text;
 });
 
 // function showFruits()
