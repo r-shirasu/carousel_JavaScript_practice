@@ -1,6 +1,11 @@
 "use strict";
 
-const reviews = [
+const fruitsImage = document.getElementById("fruits-img");
+const fruitsName = document.getElementById("fruits");
+const fruitsColor = document.getElementById("color");
+const fruitsInfo = document.getElementById("info");
+
+const fruitsMenu = [
   {
     id: 0,
     fruitsName: "Peach",
@@ -8,85 +13,26 @@ const reviews = [
     img: "./fruits/category_tn_190.jpeg",
     text: "山梨県で多く取れます",
   },
-  {
-    id: 1,
-    fruitsName: "Cherry",
-    color: "Red",
-    img: "./fruits/category_tn_192.jpeg",
-    text: "山形県で多く取れます",
-  },
-  {
-    id: 2,
-    fruitsName: "Apple",
-    color: "Red",
-    img: "./fruits/category_tn_193.jpeg",
-    text: "青森県で多く取れます",
-  },
-  {
-    id: 3,
-    fruitsName: "Grape",
-    color: "Purple",
-    img: "./fruits/category_tn_195.jpeg",
-    text: "山梨で多く取れます",
-  },
-  {
-    id: 4,
-    fruitsName: "Banana",
-    color: "Yellow",
-    img: "./fruits/category_tn_197.jpeg",
-    text: "朝食にぴったりです",
-  },
 ];
 
-const img = document.getElementById("fruits-img");
-const fruitsName = document.getElementById("fruits");
-const color = document.getElementById("color");
-const info = document.getElementById("info");
+let initialItem = 0;
 
-// ボタン定義
-const prevBtn = document.querySelector(".prev-btn");
-const nextBtn = document.querySelector(".next-btn");
-const randomBtn = document.querySelector(".random-btn");
+fruitsImage.src = fruitsMenu.img;
+fruitsName.textContent = fruitsMenu.fruitsName;
+fruitsColor.textContent = fruitsMenu.color;
+fruitsInfo.textContent = fruitsMenu.text;
 
-// set starting item
-let currentItem = 0;
-
-// load initial item
-window.addEventListener("DOMContentLoaded", () => {
-  showFruits();
-});
-
-// function showFruits()
 const showFruits = () => {
-  const item = reviews[currentItem];
-  img.src = item.img;
+  const item = fruitsMenu[initialItem];
+  fruitsImage.src = item.img;
   fruitsName.textContent = item.fruitsName;
-  color.textContent = item.color;
-  info.textContent = item.text;
+  fruitsColor.textContent = item.color;
+  fruitsInfo.textContent = item.text;
 };
+showFruits();
 
-// show next button
-nextBtn.addEventListener("click", () => {
-  currentItem++;
-  //   0番のピーチに戻る
-  if (currentItem > reviews.length - 1) {
-    currentItem = 0;
-  }
-  showFruits();
-});
-
-//show prevent button
-prevBtn.addEventListener("click", () => {
-  currentItem--;
-  if (currentItem < 0) {
-    //   4番のバナナに戻る
-    currentItem = reviews.length - 1;
-  }
-  showFruits();
-});
-
-//random button
-randomBtn.addEventListener("click", () => {
-  currentItem = Math.floor(Math.random() * reviews.length);
-  showFruits();
-});
+/**
+ * ①HTML要素の情報を取得する
+ * ②HTMLタグと配列の情報（画像、名前、色、説明）を結ぶ
+ * ③配列0番目の情報の画像、名前、色、説明を表示させる
+ */
