@@ -1,6 +1,11 @@
 "use strict";
 
-const reviews = [
+const img = document.getElementById("fruits-img");
+const fruitsName = document.getElementById("fruits");
+const fruitsColor = document.getElementById("color");
+const fruitsInfomation = document.getElementById("info");
+
+const fruitsMenu = [
   {
     id: 0,
     fruitsName: "Peach",
@@ -38,55 +43,39 @@ const reviews = [
   },
 ];
 
-const img = document.getElementById("fruits-img");
-const fruitsName = document.getElementById("fruits");
-const color = document.getElementById("color");
-const info = document.getElementById("info");
+let initialId = 0;
 
-// ボタン定義
-const prevBtn = document.querySelector(".prev-btn");
-const nextBtn = document.querySelector(".next-btn");
-const randomBtn = document.querySelector(".random-btn");
-
-// set starting item
-let currentItem = 0;
-
-// load initial item
-window.addEventListener("DOMContentLoaded", () => {
-  showFruits();
-});
-
-// function showFruits()
 const showFruits = () => {
-  const item = reviews[currentItem];
-  img.src = item.img;
-  fruitsName.textContent = item.fruitsName;
-  color.textContent = item.color;
-  info.textContent = item.text;
+  const fruitsItem = fruitsMenu[initialId];
+  img.src = fruitsItem.img;
+  fruitsName.textContent = fruitsItem.ruitsName;
+  fruitsColor.textContent = fruitsItem.color;
+  fruitsInfomation.textContent = fruitsItem.text;
 };
+showFruits();
 
-// show next button
-nextBtn.addEventListener("click", () => {
-  currentItem++;
-  //   0番のピーチに戻る
-  if (currentItem > reviews.length - 1) {
-    currentItem = 0;
+// >ボタンを定義する
+const nextButton = document.querySelector(".next-btn");
+nextButton.addEventListener("click", () => {
+  initialId++;
+  if (initialId > fruitsMenu.length - 1) {
+    initialId = 0;
   }
   showFruits();
 });
 
-//show prevent button
-prevBtn.addEventListener("click", () => {
-  currentItem--;
-  if (currentItem < 0) {
-    //   4番のバナナに戻る
-    currentItem = reviews.length - 1;
+// >ボタンを定義する
+const prevButton = document.querySelector(".prev-btn");
+prevButton.addEventListener("click", () => {
+  initialId--;
+  if (initialId < 0) {
+    initialId = fruitsMenu.length - 1;
   }
   showFruits();
 });
 
-//random button
-randomBtn.addEventListener("click", () => {
-  currentItem = Math.floor(Math.random() * reviews.length);
+const randomButton = document.querySelector(".random-btn");
+randomButton.addEventListener("click", () => {
+  initialId = Math.floor(Math.random() * fruitsMenu.length);
   showFruits();
 });
